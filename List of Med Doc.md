@@ -1,8 +1,5 @@
 # Knowledge Source Dataset for SLE RAG Analysis
 
-This repository contains the comprehensive list of medical documents used as the knowledge base for the research titled: 
-**"The Impact of Knowledge Source Type on Specialized Medical RAG-based LLMs: A Case Study on Systemic Lupus Erythematosus"**
-
 ## 1. Medical Textbooks (KB-T)
 Focus: Foundational pathophysiology and established clinical theories.
 
