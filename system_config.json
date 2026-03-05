@@ -1,0 +1,18 @@
+{
+  "system_architecture": "Multi-Path Local RAG",
+  "orchestrator": "Dify v1.12.0",
+  "inference_engine": "Ollama",
+  "llm_model": "Gemma-3:4b",
+  "embedding_model": "nomic-embed-text",
+  "retrieval_strategy": "Hybrid Search (Full Search + Vector)",
+  "weights": {
+    "semantic": 0.7,
+    "keyword": 0.3
+  },
+  "parameters": {
+    "temperature": 0,
+    "top_k": 10,
+    "chunk_size": 1024,
+    "chunk_overlap": 200
+  }
+}
