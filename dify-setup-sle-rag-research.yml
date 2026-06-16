@@ -1,0 +1,447 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: dify-setup-sle-rag-research
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.1.2@fcf107badccaf57948634ad2c557d393c3894138d83f4eb3f959e9a1d3a86512
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 20
+        file_upload_limit: 20
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1771137090650-source-1771137126285-target
+      selected: false
+      source: '1771137090650'
+      sourceHandle: source
+      target: '1771137126285'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1771137126285-source-llm-target
+      selected: false
+      source: '1771137126285'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1771137090650-source-1771137144294-target
+      source: '1771137090650'
+      sourceHandle: source
+      target: '1771137144294'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1771137090650-source-1771137146963-target
+      source: '1771137090650'
+      sourceHandle: source
+      target: '1771137146963'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1771137144294-source-1771137150946-target
+      source: '1771137144294'
+      sourceHandle: source
+      target: '1771137150946'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1771137146963-source-1771137152986-target
+      source: '1771137146963'
+      sourceHandle: source
+      target: '1771137152986'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1771137150946-source-answer-target
+      source: '1771137150946'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1771137152986-source-answer-target
+      source: '1771137152986'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: User Input
+        type: start
+        variables: []
+      height: 72
+      id: '1771137090650'
+      position:
+        x: 69
+        y: 351
+      positionAbsolute:
+        x: 69
+        y: 351
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1771137126285'
+          - result
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: gemma3:4b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: b42d1e95-2580-4439-a277-7e167ae35ceb
+          role: system
+          text: Act as an Systemic Lupus Erythematosus (SLE) Medical Specialist. Provide
+            a direct answer to {{#sys.query#}} primarily using {{#context#}}. Fallback
+            to internal knowledge only if needed. Strictly omit all introductory phrases
+            (e.g., "Based on...") and meta-talk.
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm
+      position:
+        x: 680
+        y: 282
+      positionAbsolute:
+        x: 680
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '📚 MED TEXTBOOK LLM
+
+          {{#llm.text#}}
+
+
+          🔬 MED ARTICLES LLM
+
+          {{#1771137150946.text#}}
+
+
+          📋 CLINICAL GUIDELINES LLM
+
+          {{#1771137152986.text#}}'
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 154
+      id: answer
+      position:
+        x: 995
+        y: 372
+      positionAbsolute:
+        x: 995
+        y: 372
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - dxAiGFSSnU9xkNszQjgBje66RNfoG4S85SeIGxIMR+VfF3v2IdgzwntsEhF9sQfT
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: nomic-embed-text
+              embedding_provider_name: langgenius/ollama/ollama
+              vector_weight: 0.7
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1771137090650'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 89
+      id: '1771137126285'
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - tLPVslLduYxlrSXswB3s64qS5hS4VBypcLycLSftYW1nJBlswoT2ix3zoxfFoREL
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: nomic-embed-text
+              embedding_provider_name: langgenius/ollama/ollama
+              vector_weight: 0.7
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1771137090650'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval 2
+        type: knowledge-retrieval
+      height: 89
+      id: '1771137144294'
+      position:
+        x: 380
+        y: 372
+      positionAbsolute:
+        x: 380
+        y: 372
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - xERN+wA3Ck5ATHkumSQCp0omXFMQFh7diDhUlKNHHk86ck1CR86wBgOp4f22qKGd
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: nomic-embed-text
+              embedding_provider_name: langgenius/ollama/ollama
+              vector_weight: 0.7
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1771137090650'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval 3
+        type: knowledge-retrieval
+      height: 89
+      id: '1771137146963'
+      position:
+        x: 380
+        y: 462
+      positionAbsolute:
+        x: 380
+        y: 462
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1771137144294'
+          - result
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: gemma3:4b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 30e8ab25-73c0-4e8d-876a-299699191dea
+          role: system
+          text: Act as an Systemic Lupus Erythematosus (SLE) Medical Specialist. Provide
+            a direct answer to {{#sys.query#}} primarily using {{#context#}}. Fallback
+            to internal knowledge only if needed. Strictly omit all introductory phrases
+            (e.g., "Based on...") and meta-talk.
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1771137150946'
+      position:
+        x: 680
+        y: 372
+      positionAbsolute:
+        x: 680
+        y: 372
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1771137146963'
+          - result
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: gemma3:4b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 99d4d8a3-f66c-4d75-8a68-9d86d4ac86e8
+          role: system
+          text: Act as an Systemic Lupus Erythematosus (SLE) Medical Specialist. Provide
+            a direct answer to {{#sys.query#}} primarily using {{#context#}}. Fallback
+            to internal knowledge only if needed. Strictly omit all introductory phrases
+            (e.g., "Based on...") and meta-talk.
+        selected: false
+        title: LLM 3
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1771137152986'
+      position:
+        x: 680
+        y: 462
+      positionAbsolute:
+        x: 680
+        y: 462
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 27.460740266165658
+      y: -231.07306203671794
+      zoom: 1.1317444467217173
+  rag_pipeline_variables: []
