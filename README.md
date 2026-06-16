@@ -46,6 +46,13 @@ These experts are currently in the **Internal Medicine Residency Program** at **
     * To calculate basic statistics: `python scoring_analysis.py`
     * To measure expert agreement: `python gwets_ac2_reliability_test.py`
 
+## System Workflow Visualization
+
+Below is the multi-path RAG pipeline workflow and orchestration interface configured within the Dify platform:
+
+<img width="1919" height="737" alt="Screenshot 2026-06-16 192932" src="https://github.com/user-attachments/assets/6cc634d0-1221-48a0-bfd3-1247c17b80c1" />
+*Figure 1: Visual overview of the multi-path orchestration setup inside the Dify workspace.
+
 ## Citation
 
 If you use this dataset, artifacts, or analysis methods in your research, please cite our official paper:
