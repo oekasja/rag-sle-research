@@ -1,4 +1,4 @@
-# Specialized Medical RAG-based LLM Dataset (SLE Case Study)
+# Impact of Knowledge Source Type on RAG-Based LLMs in Specialized Medical Domains (SLE Case Study)
 
 This repository serves as a complete artifact for reproducing, evaluating, and extending the research findings presented in the paper:
 
